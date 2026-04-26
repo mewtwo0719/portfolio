@@ -160,19 +160,15 @@
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
-        transform: translate(-50%, -50%);
         transition: width 0.3s, height 0.3s, background 0.3s;
-        mix-blend-mode: difference;
       }
       body.light .cursor-dot {
-        mix-blend-mode: normal;
         background: var(--text-primary);
       }
       .cursor-dot.hovered {
         width: 40px;
         height: 40px;
         background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(2px);
       }
       body.light .cursor-dot.hovered {
         background: rgba(0, 0, 0, 0.1);
@@ -213,10 +209,8 @@
       .preloader-content {
         position: relative;
         z-index: 2;
-        mix-blend-mode: difference;
       }
       body.light .preloader-content {
-        mix-blend-mode: normal;
         color: #111111;
       }
       .preloader-text {
@@ -246,8 +240,7 @@
         transition: background var(--transition), backdrop-filter var(--transition);
       }
       #navbar.scrolled {
-        background: rgba(10, 10, 10, 0.8);
-        backdrop-filter: blur(12px);
+        background: rgba(10, 10, 10, 0.95);
         border-bottom: 1px solid var(--border);
       }
       body.light #navbar.scrolled {
@@ -1527,8 +1520,7 @@
       // Custom Cursor
       const cursor = document.getElementById('cursorDot');
       document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        cursor.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
       });
       document.querySelectorAll('.hover-target, a, button, input, textarea').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
@@ -1745,7 +1737,7 @@
         }
       }
 
-      for (let i = 0; i < 150; i++) {
+      for (let i = 0; i < 50; i++) {
         particles.push(new Particle());
       }
 
